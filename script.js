@@ -8,8 +8,6 @@ const bubble = document.getElementById('bubble');
 const parts = Array.from(document.querySelectorAll('.part'));
 const askBtn = document.getElementById('ask');
 const questionEl = document.getElementById('question');
-const apiKeyEl = document.getElementById('apiKey');
-const useAiEl = document.getElementById('useAi');
 
 function shuffle(array){
   for(let i=array.length-1;i>0;i--){
@@ -77,6 +75,8 @@ function localAiAnswer(question){
   return generic[Math.floor(Math.random()*generic.length)];
 }
 
+const API_URL = 'http://127.0.0.1:3001/api/ask';
+
 async function askQuestion(){
   const question = questionEl.value.trim();
   if(!question){
@@ -87,9 +87,8 @@ async function askQuestion(){
   catAnimate('think');
   try{
     let answer;
-    // Call server-side proxy only. Do NOT fallback to local AI.
     try{
-      const resp = await fetch('/api/ask',{
+      const resp = await fetch(API_URL,{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({question})
@@ -103,7 +102,7 @@ async function askQuestion(){
       }
     }catch(err){
       console.error('Proxy unavailable or error', err);
-      showFortune('Proxy server nedostupný — spusť lokální server s OPENAI_API_KEY (viz README).');
+      showFortune('Proxy server nedostupný — spusť lokální server s OPENAI_API_KEY na http://127.0.0.1:3001.');
       return;
     }
     showFortune(answer);

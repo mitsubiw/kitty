@@ -1,12 +1,21 @@
 const express = require('express');
-const fetch = global.fetch || require('node-fetch');
 const path = require('path');
 
 const app = express();
 app.use(express.json());
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const OPENAI_KEY = process.env.OPENAI_API_KEY;
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  if(req.method === 'OPTIONS'){
+    return res.sendStatus(204);
+  }
+  next();
+});
 
 if(!OPENAI_KEY){
   console.warn('Warning: OPENAI_API_KEY is not set. /api/ask will return 503 until set.');
