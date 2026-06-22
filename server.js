@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 app.use(express.json());
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 const OPENAI_KEY = process.env.OPENAI_API_KEY;
 
 app.use((req, res, next) => {

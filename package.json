@@ -1,12 +1,6 @@
 {
-  "name": "kitty-proxy",
+  "name": "kitty",
   "version": "1.0.0",
-  "description": "Proxy server for Kitty app to keep OpenAI API key server-side",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express": "^4.18.2"
-  }
+  "description": "Local fortune-telling cat web app",
+  "private": true
 }

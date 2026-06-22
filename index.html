@@ -14,25 +14,40 @@
       <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" class="garden-svg" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stop-color="#9AD0FF"/>
-            <stop offset="100%" stop-color="#DFF3FF"/>
+            <stop offset="0%" stop-color="#1a0b14"/>
+            <stop offset="100%" stop-color="#090306"/>
           </linearGradient>
-          <linearGradient id="grass" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stop-color="#79C267"/>
-            <stop offset="100%" stop-color="#4BA03A"/>
-          </linearGradient>
+          <radialGradient id="moon" cx="0.3" cy="0.2" r="0.25">
+            <stop offset="0%" stop-color="#fff3c8" stop-opacity="0.95"/>
+            <stop offset="100%" stop-color="#7d5a36" stop-opacity="0.0"/>
+          </radialGradient>
         </defs>
         <rect width="100%" height="100%" fill="url(#sky)"/>
-        <g transform="translate(0,220)">
-          <rect width="100%" height="180" fill="url(#grass)"/>
-          <!-- simple flowers -->
-          <g fill="#FFD1E3">
-            <circle cx="120" cy="40" r="6" fill="#FF8AB6"/>
-            <circle cx="200" cy="60" r="6" fill="#FFB86B"/>
-            <circle cx="320" cy="50" r="6" fill="#FFD166"/>
-            <circle cx="460" cy="45" r="6" fill="#FF8AB6"/>
-            <circle cx="600" cy="55" r="6" fill="#FFB86B"/>
-          </g>
+        <circle cx="180" cy="100" r="72" fill="url(#moon)"/>
+        <g stroke="#1f0c15" stroke-width="20" fill="none" opacity="0.6">
+          <path d="M0 320 C120 260 180 220 260 260 S420 330 560 280 S720 320 800 260"/>
+        </g>
+        <g fill="#161117">
+          <path d="M0 260 C140 220 220 180 320 220 C420 260 520 190 620 230 C700 260 760 240 800 260 L800 400 L0 400 Z"/>
+        </g>
+        <g fill="#1f1018" stroke="#2f1724" stroke-width="3">
+          <path d="M100 310 L110 270 L120 310"/>
+          <path d="M180 300 L185 266 L190 300"/>
+          <path d="M560 312 L565 278 L570 312"/>
+          <path d="M640 308 L645 274 L650 308"/>
+        </g>
+        <g fill="#1f1320" stroke="#2f1926" stroke-width="2" stroke-linecap="round">
+          <path d="M530 230 C520 200 500 190 490 170"/>
+          <path d="M545 230 C540 214 520 200 512 173"/>
+          <path d="M590 220 C600 190 620 185 640 165"/>
+          <path d="M630 220 C615 195 628 180 646 158"/>
+          <path d="M160 235 C150 210 140 205 135 185"/>
+          <path d="M170 232 C175 210 190 205 200 185"/>
+        </g>
+        <g fill="#222" stroke="#16070c" stroke-width="3">
+          <path d="M240 330 L250 290 L270 320 M270 320 L290 300 L300 330"/>
+          <path d="M520 350 L530 320 L555 338"/>
+          <path d="M700 340 L712 310 L730 335"/>
         </g>
       </svg>
     </div>
@@ -43,10 +58,8 @@
           <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
             <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#000" flood-opacity="0.18"/>
           </filter>
-        </defs>
-        <defs>
-          <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#000" flood-opacity="0.18"/>
+          <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#b71f2d" flood-opacity="0.55"/>
           </filter>
         </defs>
 
@@ -56,6 +69,10 @@
 
         <!-- face -->
         <path class="part color-3" d="M100 100 C90 170 130 240 200 245 C270 240 310 170 300 100 C260 60 140 60 100 100 Z" filter="url(#shadow)"/>
+        <g class="scars" fill="none" stroke="#bf2a2e" stroke-width="3" stroke-linecap="round">
+          <path d="M130 150 C125 158 122 165 128 170"/>
+          <path d="M245 160 C240 170 234 176 238 184"/>
+        </g>
 
         <!-- body -->
         <ellipse class="part color-4" cx="200" cy="305" rx="110" ry="70" filter="url(#shadow)"/>
@@ -80,11 +97,11 @@
         <!-- right eye -->
         <ellipse class="part color-7" cx="245" cy="150" rx="24" ry="18"/>
 
-        <!-- pupils (dark) and highlights -->
-        <ellipse class="pupil" cx="155" cy="152" rx="8" ry="10" fill="#111"/>
-        <ellipse class="pupil" cx="245" cy="152" rx="8" ry="10" fill="#111"/>
-        <circle class="eye-highlight" cx="150" cy="146" r="3" fill="#fff" opacity="0.9"/>
-        <circle class="eye-highlight" cx="240" cy="146" r="3" fill="#fff" opacity="0.9"/>
+        <!-- pupils (red glowing) and highlights -->
+        <ellipse class="pupil" cx="155" cy="152" rx="8" ry="10"/>
+        <ellipse class="pupil" cx="245" cy="152" rx="8" ry="10"/>
+        <circle class="eye-highlight" cx="150" cy="146" r="3"/>
+        <circle class="eye-highlight" cx="240" cy="146" r="3"/>
 
         <!-- nose -->
         <path class="part color-10" d="M195 175 L205 175 L200 183 Z"/>
@@ -93,6 +110,10 @@
         <path class="part stroke" d="M180 188 Q200 198 220 188" stroke-width="2" stroke-linecap="round" fill="none"/>
         <path class="part stroke" d="M140 185 Q120 180 100 185" stroke-width="2" stroke-linecap="round" fill="none"/>
         <path class="part stroke" d="M260 185 Q280 180 300 185" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M198 190 L202 208 L206 190" fill="none" stroke="#d02a32" stroke-width="2" stroke-linecap="round"/>
+        <path d="M150 180 L146 188 L152 194" fill="none" stroke="#b71f2d" stroke-width="2" stroke-linecap="round"/>
+        <path d="M248 176 L242 188 L248 196" fill="none" stroke="#b71f2d" stroke-width="2" stroke-linecap="round"/>
+        <path d="M195 192 L190 202 202 202 Z" fill="#ec3a3a" opacity="0.95"/>
 
         <!-- shadow under body -->
         <ellipse class="ground-shadow" cx="200" cy="320" rx="95" ry="28" fill="#000" opacity="0.12"/>
@@ -119,10 +140,10 @@
       <div class="controls">
         <button id="ask">Polož otázku</button>
       </div>
-      <div class="small">Poznámka: aplikace vyžaduje lokální proxy server s OpenAI klíčem (viz README). Pokud proxy neběží, kočka neodpoví.</div>
+      <div class="small">Poznámka: kočka odpovídá přímo v prohlížeči pomocí lokálního roztomilého věštího logu.</div>
     </div>
 
-    <div class="hint">Zeptej se kočky a ona ti odpoví pomocí svého AI agenta.</div>
+    <div class="hint">Zeptej se strašidelné kočky a slyš temnou odpověď z jejího věštícího stínu.</div>
   </div>
 
   <script src="script.js"></script>

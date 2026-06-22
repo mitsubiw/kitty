@@ -1,23 +1,16 @@
 # kitty
 
-Local proxy server (optional)
+Local fortune-telling cat web app
 --------------------------------
 
-To avoid entering an OpenAI API key in the browser, run the included proxy server which keeps the key on your machine.
+This app runs entirely in the browser with a local fortune generator. No OpenAI key or proxy server is required.
 
-1. Create a `.env` file or set environment variable `OPENAI_API_KEY` with your key.
+1. Open `index.html` in your browser.
 
-On Linux/macOS:
+2. Type a question and ask the cat.
 
-```bash
-export OPENAI_API_KEY="sk-..."
-npm install
-npm start
-# then open http://127.0.0.1:3000/index.html
-```
+The cat answers using built-in mystic responses and playful local logic.
 
-The proxy serves the static files and exposes POST `/api/ask` which the client uses.
-
-If the proxy is not running or no key is set, the app will use a local fallback AI to answer simple questions.
+Optional: if you want to serve the app from a local HTTP server, use a simple static file server such as `python3 -m http.server`.
 
 mc projekt
